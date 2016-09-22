@@ -1,0 +1,44 @@
+
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html ng-app="app">
+  <head>
+    <title>QueryString Injector</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+  </head>
+  <body ng-controller="AppCtrl">
+  <div class="container-fluid">
+  <h3></h3>
+    <ul>
+    <li ng-repeat="qs in queryStrings">
+      <span data-id={{qs.id}}" ng-click="appendQueryString()">
+        {{qs.name}}
+        <i ng-click="remove()" class="pull-right glyphicon glyphicon-trash"></i>
+      </span>
+    </li>
+    </ul>
+    <form ng-submit="add()">
+      <input type="text" name="name" ng-model="newItem.name" placeholder="Name">
+      <input type="text" name="value" ng-model="newItem.value" placeholder="QS Params">
+      <input type="submit" id="submit" class="btn btn-xs btn-primary" value="Add">
+    </form>
+    </div>
+     <script src="angular.min.js"></script>
+     <script src="app/app.js"></script>
+     <script src="app/controllers/AppCtrl.js"></script>
+     <script src="app/services/ChromeStorage.js"></script>
+     <script src="app/services/utils.js"></script>
+  </body>
+</html>
+
