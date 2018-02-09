@@ -22,7 +22,7 @@
   <h3></h3>
     <ul>
     <li ng-repeat="qs in queryStrings">
-      <span data-id={{qs.id}}" ng-click="appendQueryString()">
+      <span data-id="{{qs.id}}" ng-click="appendQueryString()">
         {{qs.name}}
         <i ng-click="remove()" class="pull-right glyphicon glyphicon-trash"></i>
       </span>

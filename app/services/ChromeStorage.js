@@ -5,9 +5,7 @@ angular.module('app')
 	this.data = [];
     
     this.sync = function() {
-        chrome.storage.sync.set({queryStrings: this.data}, function() {
-            console.log('Data is stored in Chrome storage');
-        });
+        chrome.storage.sync.set({queryStrings: this.data});
     }
 
     this.findAll = function(callback) {
