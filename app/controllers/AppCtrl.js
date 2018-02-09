@@ -16,8 +16,8 @@ angular.module('app')
 		chromeStorage.add($scope.newItem);
 		$scope.newItem = {};
 	}
-	$scope.remove = function() {
-		$scope.chromeStorage.remove();
+	$scope.remove = function(item) {
+		$scope.chromeStorage.remove(item);
 	}
 
 	$scope.appendQueryString = function() {

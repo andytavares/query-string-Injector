@@ -22,16 +22,40 @@
   <h3></h3>
     <ul>
     <li ng-repeat="qs in queryStrings">
-      <span data-id="{{qs.id}}" ng-click="appendQueryString()">
+      <span ng-click="appendQueryString()">
         {{qs.name}}
-        <i ng-click="remove()" class="pull-right glyphicon glyphicon-trash"></i>
+        <i ng-click="remove(qs)" class="pull-right glyphicon glyphicon-trash"></i>
       </span>
     </li>
     </ul>
-    <form ng-submit="add()">
-      <input type="text" name="name" ng-model="newItem.name" placeholder="Name">
-      <input type="text" name="value" ng-model="newItem.value" placeholder="QS Params">
-      <input type="submit" id="submit" class="btn btn-xs btn-primary" value="Add">
+    <form name="qsForm" ng-submit="add()" novalidate>
+      <div 
+        class="form-group" 
+        ng-class="{'has-error' : qsForm.name.$touched && qsForm.name.$error.required}"
+      >
+        <input 
+          type="text" 
+          class="form-control" 
+          name="name" 
+          ng-model="newItem.name" 
+          placeholder="Display Name" 
+          required
+        >
+      </div>
+      <div 
+        class="form-group" 
+        ng-class="{'has-error' : qsForm.value.$touched && qsForm.value.$error.required}"
+      >
+        <input 
+          type="text" 
+          class="form-control" 
+          name="value" 
+          ng-model="newItem.value" 
+          placeholder="QS Params (ex. name=value)" 
+          required
+        >
+      </div>
+      <input type="submit" id="submit" class="btn btn-sm btn-primary" value="Add">
     </form>
     </div>
      <script src="angular.min.js"></script>
